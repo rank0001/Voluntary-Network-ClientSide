@@ -1,6 +1,8 @@
 const userState = {
 	user: {
 		isSignedIn: false,
+		name:'',
+		email:''
 	},
 };
 

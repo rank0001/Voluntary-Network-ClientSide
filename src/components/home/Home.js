@@ -1,6 +1,6 @@
 import React from "react";
 import Events from "../../dummyData/EventInfo";
-import Search from "../Search";
+import Search from "./Search";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Card } from "@material-ui/core";
@@ -10,9 +10,7 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 	},
-	cardRoot: {
-		maxWidth: 345,
-	},
+	
 }));
 
 export default function Home() {
