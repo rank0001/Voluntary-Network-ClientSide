@@ -44,9 +44,11 @@ const RegisterEvent = ({ location, user }) => {
 
 	if (location.state) {
 		title = location.state.data.title;
-		const newUserInfo = { ...userInfo };
-		newUserInfo.event = title;
-		setUser(newUserInfo);
+		if (userInfo.event == "") {
+			const newUserInfo = { ...userInfo };
+			newUserInfo.event = title;
+			setUser(newUserInfo);
+		}
 	}
 
 	const classes = useStyles();
@@ -61,6 +63,14 @@ const RegisterEvent = ({ location, user }) => {
 			userInfo.event
 		) {
 			console.log(userInfo);
+			const requestOptions = {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(userInfo),
+			};
+			fetch("http://localhost:5000/users", requestOptions)
+				.then((response) => response.json())
+				.then((data) => console.log(data));
 		} else {
 			setError({ message: "you must complete each field for submitting" });
 			console.log(userInfo);
