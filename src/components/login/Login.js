@@ -5,6 +5,12 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import firebase from "../../configs/FirebaseConfig";
 const Login = (props) => {
+	let data = null;
+	console.log(props);
+	if (props.location.state) {
+		data = props.location.state.data;
+	}
+	
 	const history = useHistory();
 	const provider = new firebase.auth.GoogleAuthProvider();
 	const handleSignInWithGoogle = () => {
@@ -22,7 +28,12 @@ const Login = (props) => {
 					},
 				};
 				props.userInfo(signedInUser);
-				history.push('/register');
+				const location = {
+					pathname: "/register",
+					state: { data },
+				};
+				if (props.location.state) history.push(location);
+				else history.push("/register");
 			})
 			.catch(function (error) {
 				// Handle Errors here.
