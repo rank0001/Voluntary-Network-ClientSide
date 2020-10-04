@@ -25,7 +25,42 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 export default function AddWork() {
+	const history = useHistory();
+	const [userInfo, setUser] = React.useState({
+		date: "",
+		description: "",
+		title: "",
+		image: "cleanWater.png",
+	});
+	const [error, setError] = React.useState({
+		message: "",
+	});
 	const classes = useStyles();
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (userInfo.date && userInfo.description && userInfo.title) {
+			console.log(userInfo);
+			const requestOptions = {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(userInfo),
+			};
+			fetch("http://localhost:5000/addEvent", requestOptions)
+				.then((response) => response.json())
+				.then(data=>history.push('/'));
+		} else {
+			setError({ message: "you must complete each field for submitting" });
+			console.log(userInfo);
+		}
+	};
+
+	const handleBlur = (e) => {
+		setError({ message: "" });
+		const newUserInfo = { ...userInfo };
+		newUserInfo[e.target.name] = e.target.value;
+		setUser(newUserInfo);
+	};
+
 	return (
 		<div>
 			<form
@@ -33,15 +68,15 @@ export default function AddWork() {
 				noValidate
 				autoComplete="off"
 				align="center"
-				
+				onSubmit={handleSubmit}
 			>
 				<TextField
 					id="outlined-basic"
-                    variant="outlined"
+					variant="outlined"
 					label="Event Title"
 					name="title"
 					placeholder="Enter Title "
-					
+					onBlur={handleBlur}
 				/>
 
 				<TextField
@@ -53,21 +88,26 @@ export default function AddWork() {
 					InputLabelProps={{
 						shrink: true,
 					}}
-			
+					onBlur={handleBlur}
 				/>
-                <br/>
+				<br />
 				<TextField
 					id="outlined-basic"
-                    variant="outlined"
+					variant="outlined"
 					label="Description"
 					name="description"
 					placeholder="Enter description"
-					
-					
+					onBlur={handleBlur}
 				/>
-				
-
-				
+				<input type="file" />
+				<br />
+				<Button variant="contained" color="primary" type="submit">
+					Submit
+				</Button>
+				<br />
+				<Typography style={{ color: "red" }} variant="h6">
+					{error.message}
+				</Typography>
 			</form>
 		</div>
 	);

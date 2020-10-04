@@ -2,6 +2,7 @@ import React from "react";
 import { CardMedia, Typography, Grid, Card, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "../../logos/group.png";
+
 const useStyles = makeStyles((theme) => ({
 	media: {
 		height: "100px",
@@ -25,7 +26,7 @@ const WorkDetails = ({ data, click }) => {
 	return (
 		<Grid item lg={3} md={3} sm xs>
 			<Card className={classes.cardRoot}>
-				<CardMedia className={classes.media} image={logo} />
+				<CardMedia className={classes.media} image= "../../../images/babySit.png" />
 			</Card>
 			<Typography variant="h6">{data.event}</Typography>
 			<Button
