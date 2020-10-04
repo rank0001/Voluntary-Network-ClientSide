@@ -15,7 +15,7 @@ const Event = ({ user }) => {
 	const [count, setCount] = React.useState(0);
 
 	React.useEffect(() => {
-		fetch("http://localhost:5000/user?email=" + user.email)
+		fetch("https://blooming-ridge-79416.herokuapp.com/user?email=" + user.email)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
@@ -29,7 +29,7 @@ const Event = ({ user }) => {
 		const requestOptions = {
 			method: "DELETE",
 		};
-		fetch(`http://localhost:5000/users/delete/${id}`, requestOptions)
+		fetch(`https://blooming-ridge-79416.herokuapp.com/users/delete/${id}`, requestOptions)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);

@@ -45,7 +45,7 @@ export default function AddWork() {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(userInfo),
 			};
-			fetch("http://localhost:5000/addEvent", requestOptions)
+			fetch("https://blooming-ridge-79416.herokuapp.com/addEvent", requestOptions)
 				.then((response) => response.json())
 				.then(data=>history.push('/'));
 		} else {

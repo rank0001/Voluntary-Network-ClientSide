@@ -22,7 +22,7 @@ export default function Volunteer() {
 	const [user, setUser] = React.useState([]);
 	const [count, setCount] = React.useState(0);
 	React.useEffect(() => {
-		fetch("http://localhost:5000/users")
+		fetch("https://blooming-ridge-79416.herokuapp.com/users")
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
@@ -34,7 +34,7 @@ export default function Volunteer() {
 		const requestOptions = {
 			method: "DELETE",
 		};
-		fetch(`http://localhost:5000/users/delete/${id}`, requestOptions)
+		fetch(`https://blooming-ridge-79416.herokuapp.com/users/delete/${id}`, requestOptions)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);

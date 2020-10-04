@@ -23,13 +23,13 @@ export default function Home() {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(Events),
 		};
-		fetch("http://localhost:5000/", requestOptions)
+		fetch("https://blooming-ridge-79416.herokuapp.com/", requestOptions)
 			.then((response) => response.json())
 			.then((data) => console.log(data));
 	}, []);
 
 	React.useEffect(() => {
-		fetch("http://localhost:5000/")
+		fetch("https://blooming-ridge-79416.herokuapp.com/")
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
