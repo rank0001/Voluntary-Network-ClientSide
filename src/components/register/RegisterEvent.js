@@ -68,9 +68,9 @@ const RegisterEvent = ({ location, user }) => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(userInfo),
 			};
-			fetch("http://localhost:5000/users", requestOptions)
-				.then((response) => response.json())
-				.then((data) => console.log(data));
+			fetch("http://localhost:5000/users", requestOptions).then((response) =>
+				history.push("/event")
+			);
 		} else {
 			setError({ message: "you must complete each field for submitting" });
 			console.log(userInfo);
