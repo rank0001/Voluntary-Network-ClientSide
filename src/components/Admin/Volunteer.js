@@ -5,6 +5,7 @@ import Link from "@material-ui/core/Link";
 import { useHistory } from "react-router-dom";
 import UserList from "./UserList";
 import "./Admin.css";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 const useStyles = makeStyles((theme) => ({
 	media: {
@@ -15,6 +16,12 @@ const useStyles = makeStyles((theme) => ({
 		width: "200px",
 		maxWidth: 345,
 		cursor: "pointer",
+	},
+	loader: {
+		width: "100%",
+		"& > * + *": {
+			marginTop: theme.spacing(2),
+		},
 	},
 }));
 export default function Volunteer() {
@@ -85,7 +92,14 @@ export default function Volunteer() {
 				</Grid>
 
 				<Grid item lg md sm xs={12}>
-					<UserList data={user} click={handleDelete} />
+					{user.length ? (
+						<UserList data={user} click={handleDelete} />
+					) : (
+						<div className={classes.loader}>
+							<LinearProgress />
+							<LinearProgress color="secondary" />
+						</div>
+					)}
 				</Grid>
 			</Grid>
 		</div>

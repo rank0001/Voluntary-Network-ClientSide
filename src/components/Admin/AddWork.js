@@ -32,14 +32,19 @@ export default function AddWork() {
 		title: "",
 		image: "cleanWater.png",
 	});
-	const [error, setError] = React.useState({
-		message: "",
+	const [message, setMessage] = React.useState({
+		error: "",
+		success: "",
 	});
 	const classes = useStyles();
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (userInfo.date && userInfo.description && userInfo.title) {
 			console.log(userInfo);
+			const newMessage = { ...message };
+			newMessage.success = "successfully submitted";
+			setMessage(newMessage);
+
 			const requestOptions = {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -52,13 +57,15 @@ export default function AddWork() {
 				.then((response) => response.json())
 				.then((data) => history.push("/"));
 		} else {
-			setError({ message: "you must complete each field for submitting" });
+			const newMessage = { ...message };
+			newMessage.error = "you must fill all the fields to submit";
+			setMessage(newMessage);
 			console.log(userInfo);
 		}
 	};
 
 	const handleBlur = (e) => {
-		setError({ message: "" });
+		setMessage({ error: "", success: "" });
 		const newUserInfo = { ...userInfo };
 		newUserInfo[e.target.name] = e.target.value;
 		setUser(newUserInfo);
@@ -118,7 +125,11 @@ export default function AddWork() {
 			</form>
 
 			<Typography style={{ color: "red" }} variant="h6" align="center">
-				{error.message}
+				{message.error}
+			</Typography>
+
+			<Typography style={{ color: "green" }} variant="h6" align="center">
+				{message.success}
 			</Typography>
 		</div>
 	);

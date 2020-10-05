@@ -35,8 +35,9 @@ const RegisterEvent = ({ location, user }) => {
 		event: "",
 	});
 
-	const [error, setError] = useState({
-		message: "",
+	const [message, setMessage] = React.useState({
+		error: "",
+		success: "",
 	});
 	if (!user.isSignedIn) history.push("/login");
 
@@ -63,6 +64,9 @@ const RegisterEvent = ({ location, user }) => {
 			userInfo.event
 		) {
 			console.log(userInfo);
+			const newMessage = { ...message };
+			newMessage.success = "successfully submitted";
+			setMessage(newMessage);
 			const requestOptions = {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -73,13 +77,14 @@ const RegisterEvent = ({ location, user }) => {
 				requestOptions
 			).then((response) => history.push("/event"));
 		} else {
-			setError({ message: "you must complete each field for submitting" });
-			console.log(userInfo);
+			const newMessage = { ...message };
+			newMessage.error = "You must fill all the credentials";
+			setMessage(newMessage);
 		}
 	};
 
 	const handleBlur = (e) => {
-		setError({ message: "" });
+		setMessage({ error: "", success: "" });
 		const newUserInfo = { ...userInfo };
 		newUserInfo[e.target.name] = e.target.value;
 		setUser(newUserInfo);
@@ -98,7 +103,7 @@ const RegisterEvent = ({ location, user }) => {
 					height: "80px",
 				}}
 			/>
-			<Typography variant="h5" align="center" style={{ marginTop: "15px" }}>
+			<Typography variant="h5" align="center" style={{ marginTop: "15px",color:'green' }}>
 				Register as a volunteer
 			</Typography>
 			<form
@@ -169,7 +174,11 @@ const RegisterEvent = ({ location, user }) => {
 				<br />
 			</form>
 			<Typography style={{ color: "red" }} variant="h6" align="center">
-				{error.message}
+				{message.error}
+			</Typography>
+
+			<Typography style={{ color: "green" }} variant="h6" align="center">
+				{message.success}
 			</Typography>
 		</div>
 	);
