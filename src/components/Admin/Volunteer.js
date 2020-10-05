@@ -2,10 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-import { Switch, useHistory, Route } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import UserList from "./UserList";
-import img from "../../logos/trash-2-9.png";
-import { Button } from "@material-ui/core";
+
 
 const useStyles = makeStyles((theme) => ({
 	media: {
@@ -34,7 +33,10 @@ export default function Volunteer() {
 		const requestOptions = {
 			method: "DELETE",
 		};
-		fetch(`https://blooming-ridge-79416.herokuapp.com/users/delete/${id}`, requestOptions)
+		fetch(
+			`https://blooming-ridge-79416.herokuapp.com/users/delete/${id}`,
+			requestOptions
+		)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
@@ -51,8 +53,8 @@ export default function Volunteer() {
 					item
 					lg={2}
 					md={2}
-					sm
-					xs
+					sm={2}
+					xs={12}
 					style={{
 						marginLeft: "20px",
 						borderRight: "1px solid #cccccc",
@@ -80,19 +82,8 @@ export default function Volunteer() {
 					</Link>
 				</Grid>
 
-				<Grid item lg={8} spacing={2} md={8} sm xs>
-					{user.map((user) => {
-						return (
-							<div>
-								{user.name}
-                                {user.email}
-                                {user.date}
-								<img src={img} alt="" />
-                                <Button onClick={()=>handleDelete(user._id)}>Delete</Button>
-                                
-							</div>
-						);
-					})}
+				<Grid item lg md sm xs={12}>
+					<UserList data={user} click={handleDelete} />
 				</Grid>
 			</Grid>
 		</div>
