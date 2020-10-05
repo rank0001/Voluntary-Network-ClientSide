@@ -63,7 +63,6 @@ const RegisterEvent = ({ location, user }) => {
 			userInfo.description &&
 			userInfo.event
 		) {
-			console.log(userInfo);
 			const newMessage = { ...message };
 			newMessage.success = "successfully submitted";
 			setMessage(newMessage);
@@ -189,7 +188,6 @@ const RegisterEvent = ({ location, user }) => {
 };
 
 const mapStateToProps = (state) => {
-	console.log(state.user);
 	return { user: state.user };
 };
 export default connect(mapStateToProps)(RegisterEvent);

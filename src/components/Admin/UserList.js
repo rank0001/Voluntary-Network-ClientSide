@@ -21,7 +21,6 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 export default function Userlist({ data, click }) {
-	console.log(data);
 	const classes = useStyles();
 
 	return (

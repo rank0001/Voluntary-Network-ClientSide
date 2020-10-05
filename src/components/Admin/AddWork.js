@@ -40,7 +40,6 @@ export default function AddWork() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (userInfo.date && userInfo.description && userInfo.title) {
-			console.log(userInfo);
 			const newMessage = { ...message };
 			newMessage.success = "successfully submitted";
 			setMessage(newMessage);
@@ -60,7 +59,6 @@ export default function AddWork() {
 			const newMessage = { ...message };
 			newMessage.error = "you must fill all the fields to submit";
 			setMessage(newMessage);
-			console.log(userInfo);
 		}
 	};
 

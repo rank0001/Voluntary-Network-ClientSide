@@ -29,14 +29,11 @@ const Event = ({ user }) => {
 		fetch("https://blooming-ridge-79416.herokuapp.com/user?email=" + user.email)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				setEvents(data);
 			});
 	}, [count]);
 
 	const handleDelete = (id) => {
-		console.log(id);
-
 		const requestOptions = {
 			method: "DELETE",
 		};
@@ -46,7 +43,6 @@ const Event = ({ user }) => {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				setCount((set) => set + 1);
 			});
 	};
@@ -70,7 +66,6 @@ const Event = ({ user }) => {
 };
 
 const mapStateToProps = (state) => {
-	console.log(state.user);
 	return { user: state.user };
 };
 export default connect(mapStateToProps)(Event);

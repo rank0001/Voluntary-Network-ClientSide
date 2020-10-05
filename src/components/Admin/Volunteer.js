@@ -31,7 +31,6 @@ export default function Volunteer() {
 		fetch("https://blooming-ridge-79416.herokuapp.com/users")
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				setUser(data);
 			});
 	}, [count]);
@@ -46,7 +45,6 @@ export default function Volunteer() {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				setCount((set) => set + 1);
 			});
 	};

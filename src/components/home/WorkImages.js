@@ -21,7 +21,6 @@ const WorkImages = ({ data, user }) => {
 	console.log(position);
 	const history = useHistory();
 	const handleEventClick = (data) => {
-		console.log(data);
 		if (!user.isSignedIn) {
 			const location = {
 				pathname: "/login",

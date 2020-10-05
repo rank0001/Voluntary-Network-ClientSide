@@ -30,14 +30,13 @@ export default function Home() {
 		};
 		fetch("https://blooming-ridge-79416.herokuapp.com/", requestOptions)
 			.then((response) => response.json())
-			.then((data) => console.log(data));
+			.then((data) => {});
 	}, []);
 
 	React.useEffect(() => {
 		fetch("https://blooming-ridge-79416.herokuapp.com/")
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				setEvent(data);
 			});
 	}, []);

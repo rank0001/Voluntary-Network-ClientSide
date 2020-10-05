@@ -25,7 +25,6 @@ const Login = (props) => {
 		error: "",
 	});
 	let data = null;
-	console.log(props);
 	if (props.location.state) {
 		data = props.location.state.data;
 	}
@@ -37,7 +36,6 @@ const Login = (props) => {
 			.auth()
 			.signInWithPopup(provider)
 			.then((result) => {
-				console.log(result);
 				const { displayName } = result.user;
 				const signedInUser = {
 					user: {
