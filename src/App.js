@@ -21,7 +21,7 @@ function App() {
 					<Route path="/event" component={Event} />
 					<Route exact path="/volunteers" component={Volunteer} />
 					<Route path="/volunteers/add" component={AddWork} />
-					<Route path="*" component={NoRoute}/>
+					<Route path="*" component={NoRoute} />
 				</Switch>
 			</BrowserRouter>
 		</div>

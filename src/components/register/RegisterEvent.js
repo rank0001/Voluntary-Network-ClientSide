@@ -103,7 +103,11 @@ const RegisterEvent = ({ location, user }) => {
 					height: "80px",
 				}}
 			/>
-			<Typography variant="h5" align="center" style={{ marginTop: "15px",color:'green' }}>
+			<Typography
+				variant="h5"
+				align="center"
+				style={{ marginTop: "15px", color: "green" }}
+			>
 				Register as a volunteer
 			</Typography>
 			<form

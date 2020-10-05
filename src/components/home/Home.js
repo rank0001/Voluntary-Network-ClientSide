@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import WorkImages from "./WorkImages";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
@@ -51,17 +52,22 @@ export default function Home() {
 					<LinearProgress color="secondary" />
 				</div>
 			) : (
-				<Grid
-					container
-					spacing={2}
-					style={{ marginTop: "20px" }}
-					alignItems="center"
-					justify="center"
-				>
-					{eventState.map((event) => (
-						<WorkImages data={event} />
-					))}
-				</Grid>
+				<div>
+					<Typography style={{ color: "green" }} variant="h6" align="center">
+						Total Number Of Events : {eventState.length}
+					</Typography>
+					<Grid
+						container
+						spacing={2}
+						style={{ marginTop: "20px" }}
+						alignItems="center"
+						justify="center"
+					>
+						{eventState.map((event) => (
+							<WorkImages data={event} />
+						))}
+					</Grid>
+				</div>
 			)}
 		</div>
 	);
