@@ -7,7 +7,6 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-	
 	loader: {
 		width: "100%",
 		"& > * + *": {
@@ -53,20 +52,19 @@ const Event = ({ user }) => {
 	};
 
 	return (
-		<div> 
-		{events.length?(
-			<Grid container spacing={1} style={{ marginTop: "20px" }}>
-				{events.map((event) => (
-					<WorkDetails data={event} click={handleDelete} />
-				))}
-			</Grid>
-		):(
-			<div className={classes.loader}>
+		<div>
+			{events.length ? (
+				<Grid container spacing={1} style={{ marginTop: "20px" }}>
+					{events.map((event) => (
+						<WorkDetails data={event} click={handleDelete} />
+					))}
+				</Grid>
+			) : (
+				<div className={classes.loader}>
 					<LinearProgress />
 					<LinearProgress color="secondary" />
 				</div>
-		)}
-			
+			)}
 		</div>
 	);
 };
