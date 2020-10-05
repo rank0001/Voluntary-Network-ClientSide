@@ -10,7 +10,7 @@ const Login = (props) => {
 	if (props.location.state) {
 		data = props.location.state.data;
 	}
-	
+
 	const history = useHistory();
 	const provider = new firebase.auth.GoogleAuthProvider();
 	const handleSignInWithGoogle = () => {

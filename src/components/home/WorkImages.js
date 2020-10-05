@@ -40,7 +40,7 @@ const WorkImages = ({ data, user }) => {
 
 	const classes = useStyles();
 	return (
-		<Grid item lg={3} md={3} sm xs>
+		<Grid item lg={3} md sm xs>
 			<Card
 				className={classes.cardRoot}
 				style={{ marginLeft: "5px" }}

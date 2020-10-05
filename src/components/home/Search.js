@@ -39,9 +39,10 @@ export default function Search() {
 			<div
 				className={classes.search}
 				align="center"
-				style={{ margin: "5px 0"}}
+				style={{ margin: "5px 0" }}
 			>
-				<InputBase style={{background:'whitesmoke'}}
+				<InputBase
+					style={{ background: "whitesmoke" }}
 					placeholder="Search…"
 					classes={{
 						root: classes.inputRoot,

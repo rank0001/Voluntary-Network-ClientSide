@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import WorkDetails from "./WorkDetails";
 import { useHistory } from "react-router-dom";
@@ -29,7 +28,10 @@ const Event = ({ user }) => {
 		const requestOptions = {
 			method: "DELETE",
 		};
-		fetch(`https://blooming-ridge-79416.herokuapp.com/users/delete/${id}`, requestOptions)
+		fetch(
+			`https://blooming-ridge-79416.herokuapp.com/users/delete/${id}`,
+			requestOptions
+		)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
@@ -39,7 +41,6 @@ const Event = ({ user }) => {
 
 	return (
 		<div>
-			<h2>{count}</h2>
 			<Grid container spacing={2} style={{ marginTop: "20px" }}>
 				{events.map((event) => (
 					<WorkDetails data={event} click={handleDelete} />
