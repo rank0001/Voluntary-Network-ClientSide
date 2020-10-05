@@ -40,7 +40,7 @@ const WorkImages = ({ data, user }) => {
 	return (
 		
 		<Grid item lg={3} md sm xs >
-			<Card key={data._id}
+			<Card 
 				className={classes.cardRoot}
 				style={{ marginLeft: "5px" }}
 				onClick={() => handleEventClick(data)}
