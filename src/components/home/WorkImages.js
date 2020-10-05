@@ -17,8 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const color = ["#FBC02D", "#E64A19", "#009688", "#303F9F"];
 
 const WorkImages = ({ data, user }) => {
-	const position = color[Math.floor(Math.random() * Math.floor(4))];
-	console.log(position);
+	const position = color[Math.floor(Math.random() * Math.floor(4))]
 	const history = useHistory();
 	const handleEventClick = (data) => {
 		if (!user.isSignedIn) {
@@ -39,8 +38,9 @@ const WorkImages = ({ data, user }) => {
 
 	const classes = useStyles();
 	return (
-		<Grid item lg={3} md sm xs>
-			<Card
+		
+		<Grid item lg={3} md sm xs >
+			<Card key={data._id}
 				className={classes.cardRoot}
 				style={{ marginLeft: "5px" }}
 				onClick={() => handleEventClick(data)}
@@ -62,6 +62,7 @@ const WorkImages = ({ data, user }) => {
 				{data.title}
 			</Typography>
 		</Grid>
+		
 	);
 };
 

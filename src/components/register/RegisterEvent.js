@@ -5,7 +5,7 @@ import logo from "../../logos/group.png";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Typography, Paper } from "@material-ui/core";
+import { Typography} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {

@@ -42,7 +42,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div>
+		<div >
 			<Search />
 
 			{!eventState.length ? (
@@ -51,11 +51,11 @@ export default function Home() {
 					<LinearProgress color="secondary" />
 				</div>
 			) : (
-				<div>
+				<div key={Math.random()}>
 					<Typography style={{ color: "green" }} variant="h6" align="center">
 						Total Number Of Events : {eventState.length}
 					</Typography>
-					<Grid
+					<Grid 
 						container
 						spacing={2}
 						style={{ marginTop: "20px" }}
