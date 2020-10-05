@@ -5,13 +5,13 @@ import logo from "../../logos/group.png";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Typography } from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > *": {
-			margin: theme.spacing(1),
 			width: "45ch",
+			margin: theme.spacing(1),
 		},
 	},
 	container: {
@@ -68,9 +68,10 @@ const RegisterEvent = ({ location, user }) => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(userInfo),
 			};
-			fetch("https://blooming-ridge-79416.herokuapp.com/users", requestOptions).then((response) =>
-				history.push("/event")
-			);
+			fetch(
+				"https://blooming-ridge-79416.herokuapp.com/users",
+				requestOptions
+			).then((response) => history.push("/event"));
 		} else {
 			setError({ message: "you must complete each field for submitting" });
 			console.log(userInfo);
@@ -89,8 +90,17 @@ const RegisterEvent = ({ location, user }) => {
 			<img
 				src={logo}
 				alt=""
-				style={{ width: "100%", height: "auto", textAlign: "center" }}
+				style={{
+					margin: "auto",
+					display: "block",
+					maxWidth: "100%",
+					maxHeight: "100%",
+					height: "80px",
+				}}
 			/>
+			<Typography variant="h5" align="center" style={{ marginTop: "15px" }}>
+				Register as a volunteer
+			</Typography>
 			<form
 				className={classes.root}
 				noValidate
@@ -157,10 +167,10 @@ const RegisterEvent = ({ location, user }) => {
 					Registration
 				</Button>
 				<br />
-				<Typography style={{ color: "red" }} variant="h6">
-					{error.message}
-				</Typography>
 			</form>
+			<Typography style={{ color: "red" }} variant="h6" align="center">
+				{error.message}
+			</Typography>
 		</div>
 	);
 };

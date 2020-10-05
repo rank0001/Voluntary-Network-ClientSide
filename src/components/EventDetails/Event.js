@@ -41,7 +41,7 @@ const Event = ({ user }) => {
 
 	return (
 		<div>
-			<Grid container spacing={2} style={{ marginTop: "20px" }}>
+			<Grid container spacing={1} style={{ marginTop: "20px" }}>
 				{events.map((event) => (
 					<WorkDetails data={event} click={handleDelete} />
 				))}
