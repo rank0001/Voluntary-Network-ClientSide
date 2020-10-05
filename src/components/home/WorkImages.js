@@ -5,17 +5,20 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 const useStyles = makeStyles((theme) => ({
 	media: {
-		height: "100px",
+		height: "200px",
 		paddingTop: "56.25%", // 16:9
 	},
 	cardRoot: {
-		width: "200px",
-		maxWidth: 345,
+		width: "300px",
 		cursor: "pointer",
 	},
 }));
-const WorkImages = ({ data, user }) => {
 
+const color = ["#FBC02D", "#E64A19", "#009688", "#303F9F"];
+
+const WorkImages = ({ data, user }) => {
+	const position = color[Math.floor(Math.random() * Math.floor(4))];
+	console.log(position);
 	const history = useHistory();
 	const handleEventClick = (data) => {
 		console.log(data);
@@ -24,10 +27,9 @@ const WorkImages = ({ data, user }) => {
 				pathname: "/login",
 				state: { data },
 			};
-			
+
 			history.push(location);
-		} 
-		else{
+		} else {
 			const location = {
 				pathname: "/register",
 				state: { data },
@@ -39,10 +41,27 @@ const WorkImages = ({ data, user }) => {
 	const classes = useStyles();
 	return (
 		<Grid item lg={3} md={3} sm xs>
-			<Card className={classes.cardRoot} onClick={() => handleEventClick(data)}>
+			<Card
+				className={classes.cardRoot}
+				style={{ marginLeft: "5px" }}
+				onClick={() => handleEventClick(data)}
+			>
 				<CardMedia className={classes.media} image={`images/${data.image}`} />
 			</Card>
-			<Typography variant="h6">{data.title}</Typography>
+			<Typography
+				variant="h6"
+				style={{
+					marginLeft: "5px",
+					position: "relative",
+					top: "-50px",
+					textAlign: "center",
+					width: "300px",
+					background: position,
+					height: "50px",
+				}}
+			>
+				{data.title}
+			</Typography>
 		</Grid>
 	);
 };

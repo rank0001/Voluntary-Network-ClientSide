@@ -6,7 +6,9 @@ import Event from "./components/EventDetails/Event";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import Navigation from "./components/navbar/Navigation";
+import NoRoute from "./components/NoRoute/NoRoute";
 import RegisterEvent from "./components/register/RegisterEvent";
+
 function App() {
 	return (
 		<div className="App">
@@ -19,6 +21,7 @@ function App() {
 					<Route path="/event" component={Event} />
 					<Route exact path="/volunteers" component={Volunteer} />
 					<Route path="/volunteers/add" component={AddWork} />
+					<Route path="*" component={NoRoute}/>
 				</Switch>
 			</BrowserRouter>
 		</div>

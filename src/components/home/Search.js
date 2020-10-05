@@ -28,12 +28,20 @@ export default function Search() {
 
 	return (
 		<div className={classes.root}>
-			<Typography align="center" variant="h5">
+			<Typography
+				align="center"
+				variant="h5"
+				style={{ fontWeight: 800, marginTop: "10px", padding: "5px" }}
+			>
 				We GROW BY HELPING PEOPLE IN NEED
 			</Typography>
 
-			<div className={classes.search} align="center">
-				<InputBase
+			<div
+				className={classes.search}
+				align="center"
+				style={{ margin: "5px 0"}}
+			>
+				<InputBase style={{background:'whitesmoke'}}
 					placeholder="Search…"
 					classes={{
 						root: classes.inputRoot,
