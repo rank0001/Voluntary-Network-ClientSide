@@ -4,7 +4,26 @@ import { userInfo } from "../../actions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import firebase from "../../configs/FirebaseConfig";
+import { Typography, Paper } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import logo from "../../logos/group.png";
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		"& > *": {
+			margin: "auto",
+			width: theme.spacing(100),
+			height: theme.spacing(50),
+			background: "whitesmoke",
+		},
+	},
+}));
+
 const Login = (props) => {
+	const classes = useStyles();
+	const [errorMessage, setMessage] = React.useState({
+		error: "",
+	});
 	let data = null;
 	console.log(props);
 	if (props.location.state) {
@@ -35,25 +54,49 @@ const Login = (props) => {
 				if (props.location.state) history.push(location);
 				else history.push("/register");
 			})
-			.catch(function (error) {
-				// Handle Errors here.
-				// const errorMessage = error.message;
-				// const newUserInfo = { ...user };
-				// newUserInfo.error = errorMessage;
-				// setUser(newUserInfo);
+			.catch(function (err) {
+				const error = err.message;
+				const newUserInfo = { ...errorMessage };
+				newUserInfo.errorMessage = error;
+				setMessage(newUserInfo);
 			});
 	};
 
 	return (
-		<div style={{ textAlign: "center" }}>
-			<h3>Login With </h3>
-			<Button
-				variant="contained"
-				color="primary"
-				onClick={handleSignInWithGoogle}
+		<div>
+			<img
+				src={logo}
+				alt=""
+				style={{
+					margin: "auto",
+					display: "block",
+					maxWidth: "100%",
+					maxHeight: "100%",
+					height: "80px",
+				}}
+			/>
+			<div
+				style={{ textAlign: "center", marginTop: "40px" }}
+				className={classes.root}
 			>
-				Continue With Google
-			</Button>
+				<Paper variant="outlined">
+					<Typography variant="h5" style={{ marginTop: "100px" }}>
+						Login
+					</Typography>
+
+					<Button
+						style={{ borderRadius: "15px", width: "80%", marginTop: "10px" }}
+						variant="contained"
+						color="primary"
+						onClick={handleSignInWithGoogle}
+					>
+						Continue With Google
+					</Button>
+					<Typography variant="h6" style={{ marginTop: "100px" }}>
+						{errorMessage.error}
+					</Typography>
+				</Paper>
+			</div>
 		</div>
 	);
 };
