@@ -66,7 +66,7 @@ export default function AddWork() {
 
 	return (
 		<div>
-			<Typography variant="h5" align='center' style={{fontWeight:'bold'}} >
+			<Typography variant="h5" align="center" style={{ fontWeight: "bold" }}>
 				Add Event
 			</Typography>
 			<form
@@ -75,7 +75,7 @@ export default function AddWork() {
 				autoComplete="off"
 				align="center"
 				onSubmit={handleSubmit}
-				style={{marginTop:'50px'}}
+				style={{ marginTop: "50px" }}
 			>
 				<TextField
 					id="outlined-basic"
@@ -99,7 +99,7 @@ export default function AddWork() {
 				/>
 				<br />
 				<TextField
-				    style={{marginLeft:'140px'}}
+					style={{ marginLeft: "140px" }}
 					id="outlined-multiline-static"
 					label="Description"
 					name="description"
@@ -109,17 +109,17 @@ export default function AddWork() {
 					variant="outlined"
 					onBlur={handleBlur}
 				/>
-				<input type="file" style={{marginTop:'40px',marginLeft:'20px'}}/>
+				<input type="file" style={{ marginTop: "40px", marginLeft: "20px" }} />
 				<br />
 				<Button variant="contained" color="primary" type="submit">
 					Submit
 				</Button>
 				<br />
 			</form>
-			
-			<Typography style={{ color: "red" }} variant="h6" align='center'>
-					{error.message}
-				</Typography>
+
+			<Typography style={{ color: "red" }} variant="h6" align="center">
+				{error.message}
+			</Typography>
 		</div>
 	);
 }

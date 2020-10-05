@@ -2,9 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import UserList from "./UserList";
-
+import "./Admin.css";
 
 const useStyles = makeStyles((theme) => ({
 	media: {
@@ -67,6 +67,7 @@ export default function Volunteer() {
 						onClick={() => {
 							history.push("/volunteers");
 						}}
+						className="link"
 					>
 						Volunteer Register List
 					</Link>
@@ -77,6 +78,7 @@ export default function Volunteer() {
 						onClick={() => {
 							history.push("/volunteers/add");
 						}}
+						className="link"
 					>
 						Add Event
 					</Link>
