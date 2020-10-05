@@ -45,9 +45,12 @@ export default function AddWork() {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(userInfo),
 			};
-			fetch("https://blooming-ridge-79416.herokuapp.com/addEvent", requestOptions)
+			fetch(
+				"https://blooming-ridge-79416.herokuapp.com/addEvent",
+				requestOptions
+			)
 				.then((response) => response.json())
-				.then(data=>history.push('/'));
+				.then((data) => history.push("/"));
 		} else {
 			setError({ message: "you must complete each field for submitting" });
 			console.log(userInfo);
@@ -63,12 +66,16 @@ export default function AddWork() {
 
 	return (
 		<div>
+			<Typography variant="h5" align='center' style={{fontWeight:'bold'}} >
+				Add Event
+			</Typography>
 			<form
 				className={classes.root}
 				noValidate
 				autoComplete="off"
 				align="center"
 				onSubmit={handleSubmit}
+				style={{marginTop:'50px'}}
 			>
 				<TextField
 					id="outlined-basic"
@@ -92,23 +99,27 @@ export default function AddWork() {
 				/>
 				<br />
 				<TextField
-					id="outlined-basic"
-					variant="outlined"
+				    style={{marginLeft:'140px'}}
+					id="outlined-multiline-static"
 					label="Description"
 					name="description"
-					placeholder="Enter description"
+					multiline
+					rows={4}
+					placeholder="Give description"
+					variant="outlined"
 					onBlur={handleBlur}
 				/>
-				<input type="file" />
+				<input type="file" style={{marginTop:'40px',marginLeft:'20px'}}/>
 				<br />
 				<Button variant="contained" color="primary" type="submit">
 					Submit
 				</Button>
 				<br />
-				<Typography style={{ color: "red" }} variant="h6">
+			</form>
+			
+			<Typography style={{ color: "red" }} variant="h6" align='center'>
 					{error.message}
 				</Typography>
-			</form>
 		</div>
 	);
 }
