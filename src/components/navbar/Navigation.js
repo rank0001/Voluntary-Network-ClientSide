@@ -33,7 +33,7 @@ const Navigation = ({ user }) => {
 						<Link to="/volunteers">Volunteer List</Link>
 					</Nav.Link>
 					<Nav.Link>
-						<Link to="/volunteers/add">Add Voluntary Work</Link>
+						<Link to="/volunteers/add">Add Event</Link>
 					</Nav.Link>
 				</Nav>
 				{user.isSignedIn ? (

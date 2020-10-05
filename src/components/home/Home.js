@@ -4,10 +4,16 @@ import Search from "./Search";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import WorkImages from "./WorkImages";
-
+import LinearProgress from "@material-ui/core/LinearProgress";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
+	},
+	loader: {
+		width: "100%",
+		"& > * + *": {
+			marginTop: theme.spacing(2),
+		},
 	},
 }));
 
@@ -39,17 +45,24 @@ export default function Home() {
 		<div>
 			<Search />
 
-			<Grid
-				container
-				spacing={2}
-				style={{ marginTop: "20px" }}
-				alignItems="center"
-				justify="center"
-			>
-				{eventState.map((event) => (
-					<WorkImages data={event} />
-				))}
-			</Grid>
+			{!eventState.length ? (
+				<div className={classes.loader}>
+					<LinearProgress />
+					<LinearProgress color="secondary" />
+				</div>
+			) : (
+				<Grid
+					container
+					spacing={2}
+					style={{ marginTop: "20px" }}
+					alignItems="center"
+					justify="center"
+				>
+					{eventState.map((event) => (
+						<WorkImages data={event} />
+					))}
+				</Grid>
+			)}
 		</div>
 	);
 }
