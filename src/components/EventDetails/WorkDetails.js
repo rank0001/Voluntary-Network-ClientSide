@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Grid, Button, Paper, ButtonBase } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
-
+import babyImage from "../../logos/babySit.png";
 const useStyles = makeStyles((theme) => ({
 	media: {
 		height: "100px",
@@ -42,11 +42,7 @@ const WorkDetails = ({ data, click }) => {
 				<Grid container spacing={2}>
 					<Grid item>
 						<ButtonBase className={classes.image}>
-							<img
-								className={classes.img}
-								alt="complex"
-								src="../../../images/babysit.png"
-							/>
+							<img className={classes.img} alt="complex" src={babyImage} />
 						</ButtonBase>
 					</Grid>
 
