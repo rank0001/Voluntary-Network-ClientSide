@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
 		paddingTop: "56.25%", // 16:9
 	},
 	cardRoot: {
-		width: "900px",
+	        	width: "900px",
 		maxWidth: 345,
 		cursor: "pointer",
 	},
