@@ -1,6 +1,11 @@
+# Voluntary Network
+
+![screenshot of the website](src/logos/pro2.png)
+
+
 Website Link: [Voluntary Network](https://voluntary-network.web.app/ "Voluntary Network")
 
-This is a full stack mern app where different volunteering events are added by admins and users can register to any of those events according to their choices. 
+Created a full stack mern app where different volunteering events are added by admins and users can register to any of those events according to their choices. 
 
 Environment:Reactjs,Mongodb, Redux, Firebase, ExpressJS, Javascript, NodeJS, React-Bootstrap, Material-UI, Heroku 
 
